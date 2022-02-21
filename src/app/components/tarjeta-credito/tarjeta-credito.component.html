@@ -3,7 +3,7 @@
         <div class="col-lg-8 offset-lg-2">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="tittle">Tarjetas de Credito</h3>
+                    <h3 class="tittle">TARJETAS DE CREDITO</h3>
                 </div>
             </div>
         </div>
@@ -13,9 +13,9 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="tittle">Agregar Tarjeta</h5>
+                    <h5 class="tittle">{{ accion | uppercase }} TARJETA</h5>
 
-                    <form [formGroup]="form" (ngSubmit)="agregarTarjeta()">
+                    <form [formGroup]="form" (ngSubmit)="guardarTarjeta()">
                         <div class="input-group input-group-lg mb-3">
                             <span class="input-group-text">
                                 <i class="fa-solid fa-user" 
@@ -72,15 +72,15 @@
                     <h5 class="tittle">Listado de Tarjetas</h5>
                     <table class="table">
                         <tbody>
-                            <tr *ngFor="let tarjeta of listaTarjetas; let i = index">
+                            <tr *ngFor="let tarjeta of listaTarjetas">
                                 <td>{{ tarjeta.titular }}</td>
                                 <td>{{ tarjeta.numeroTarjeta }}</td>
                                 <td>{{ tarjeta.fechaExpiracion }}</td>
                                 <td>
-                                    <i class="fa-regular fa-pen-to-square text-info"></i>
+                                    <i (click)="editarTarjeta(tarjeta)" class="fa-regular fa-pen-to-square text-info"></i>
                                 </td>
                                 <td>
-                                    <i (click)="eliminarTarjeta(i)" class="fa-regular fa-trash-can text-danger"></i>
+                                    <i (click)="eliminarTarjeta(tarjeta.id)" class="fa-regular fa-trash-can text-danger"></i>
                                 </td>
                             </tr>
                         </tbody>
